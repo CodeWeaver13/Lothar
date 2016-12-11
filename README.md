@@ -4,6 +4,33 @@
 [![Support](https://img.shields.io/badge/support-iOS%208%2B-blue.svg)](https://www.apple.com/nl/ios/)
 #### 基于[CTMediator](https://github.com/casatwy/CTMediator)的组件化中间件
 
+## 特点
+相对于CTMediator，增加了一些功能
+
+1. 增加容错处理
+2. 增加短链映射处理
+3. 提供基于user:password的鉴权方案
+
+====
+
+## 使用方法
+***AppDelegate application:didFinishLaunchingWithOptions:***
+
+```objective-c
+LotharConfig *config = [[LotharConfig alloc] init];
+config.URLScheme = @"lothar";
+config.URLVerifySkip = YES;
+config.URLRouteMapFilePath = [[NSBundle mainBundle] pathForResource:@"RouteMapTemplate" ofType:@"plist"];
+[LotharMediator shared].config = config;
+```
+
+***AppDelegate application:openURL:options:***
+
+```objective-c
+return [[[LotharMediator shared] performActionWithUrl:url completion:nil] boolValue];
+```
+
+
 ## 环境要求
 
 该库需运行在 iOS 8.0 和 Xcode 7.0以上环境.

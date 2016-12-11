@@ -1,31 +1,34 @@
 //
-//  Lothar.m
+//  LotharMediator.m
 //  Lothar
 //
 //  Created by wangshiyu13 on 2016/12/12.
 //  Copyright © 2016年 mykj. All rights reserved.
 //
 
-#import "Lothar.h"
-#import "LotharObject.h"
+#import "LotharMediator.h"
 #import "LotharConfig.h"
 
+#import "LotharExceptionProtocol.h"
+#import "LotharTipProtocol.h"
+
+#import "LotharObject.h"
 #import "LotharRouteMapObject.h"
 
-@interface Lothar ()
+@interface LotharMediator ()
 /**
  APP的控制器映射表
  */
 @property (nonatomic, strong) LotharRouteMapObject *URLModuleMap;
 @end
 
-@implementation Lothar
+@implementation LotharMediator
 #pragma mark - public methods
-+ (instancetype)sharedInstance {
-    static Lothar *mediator;
++ (instancetype)shared {
+    static LotharMediator *mediator;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        mediator = [[Lothar alloc] init];
+        mediator = [[LotharMediator alloc] init];
     });
     return mediator;
 }
@@ -44,7 +47,7 @@
  myapp://user:password@targetA/actionB?id=1234
  */
 - (nonnull id)performActionWithUrl:(NSURL *)url
-                        completion:(void (^)(NSDictionary *))completion
+                        completion:(void (^ _Nullable)(NSDictionary *))completion
 {
     LotharObject *obj = [LotharObject parseObjectWithURL:url];
     
@@ -64,9 +67,8 @@
         return @(NO);
     }
     
-    while (![obj.user isEqualToString:self.config.URLUser] ||
-           ![obj.password isEqualToString:self.config.URLPassword] ||
-           NO == self.config.URLVerifySkip) {
+    while ((![obj.user isEqualToString:self.config.URLUser] || ![obj.password isEqualToString:self.config.URLPassword])
+           && (NO == self.config.URLVerifySkip)) {
         // 这里是处理远程调用账号密码错误的处理
         if ([self.exceptionDelegate respondsToSelector:@selector(mediatorCannotMatchUserOrPasswordWithUser:andPassword:)]) {
             BOOL next = [self.exceptionDelegate mediatorCannotMatchUserOrPasswordWithUser:obj.user

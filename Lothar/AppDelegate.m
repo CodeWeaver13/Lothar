@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "Lothar.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame: [UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = [NSClassFromString(@"ViewController") new];
+    
+    LotharConfig *config = [[LotharConfig alloc] init];
+    config.URLScheme = @"lothar";
+    config.URLVerifySkip = YES;
+    config.URLRouteMapFilePath = [[NSBundle mainBundle] pathForResource:@"RouteMapTemplate" ofType:@"plist"];
+    [LotharMediator shared].config = config;
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
@@ -47,5 +58,9 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
+{
+    return [[[LotharMediator shared] performActionWithUrl:url completion:nil] boolValue];
+}
 
 @end
