@@ -9,5 +9,4 @@ spec.source           =  {:git => 'https://github.com/QianKun-HanLin/Lothar.git'
 spec.source_files     = 'Lothar/Source/**/*.{h,m}'
 spec.requires_arc     = true
 spec.ios.deployment_target = '8.0'
-spec.dependency 'AFNetworking', '~> 3.1.0'
 end
