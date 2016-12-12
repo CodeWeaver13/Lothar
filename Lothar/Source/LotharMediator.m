@@ -20,6 +20,8 @@
  APP的控制器映射表
  */
 @property (nonatomic, strong) LotharRouteMapObject *URLModuleMap;
+
+@property (nonatomic, strong) NSMutableDictionary *targetCache;
 @end
 
 @implementation LotharMediator
@@ -46,8 +48,7 @@
  url sample:
  myapp://user:password@targetA/actionB?id=1234
  */
-- (nonnull id)performActionWithUrl:(NSURL *)url
-                        completion:(void (^ _Nullable)(NSDictionary *))completion
+- (id)performActionWithUrl:(NSURL *)url completion:(void (^)(id _Nullable))completion
 {
     LotharObject *obj = [LotharObject parseObjectWithURL:url];
     
@@ -83,10 +84,12 @@
     // 对URL的路由处理由URLModuleMap路由表完成，路由表内映射短链和Target/Action之间的关系
     id result = [self performTarget:self.URLModuleMap[obj.target].targetName
                              action:self.URLModuleMap[obj.target][obj.action].actionName
-                             params:obj.params];
+                             params:obj.params
+                  shouldCacheTarget:NO];
+    
     if (completion) {
         if (result) {
-            completion(@{@"result":result});
+            completion(result);
         } else {
             completion(nil);
         }
@@ -94,22 +97,30 @@
     return result;
 }
 
-- (nonnull id)performTarget:(NSString *)targetName
+- (nullable id)performTarget:(NSString *)targetName
                      action:(NSString *)actionName
                      params:(NSDictionary *)params
+          shouldCacheTarget:(BOOL)shouldCacheTarget
 {
     NSString *targetClzStr = [NSString stringWithFormat:@"Target_%@", targetName];
     NSString *actionStr = [NSString stringWithFormat:@"Action_%@:", actionName];
     
-    Class targetClass = NSClassFromString(targetClzStr);
-    id target = [[targetClass alloc] init];
+    id target = self.targetCache[targetClzStr];
+    // 如果target有误，则通过tipDelegate的notFoundTargetTipController方法返回提示VC
+    if (target == nil) {
+        Class targetClass = NSClassFromString(targetClzStr);
+        target = [[targetClass alloc] init];
+    }
     SEL action = NSSelectorFromString(actionStr);
     
-    // 如果target有误，则通过tipDelegate的notFoundTargetTipController方法返回提示VC
     if (target == nil) {
         if ([self.tipDelegate respondsToSelector:@selector(notFoundTargetTipController)]) {
             return [self.tipDelegate notFoundTargetTipController];
         }
+    }
+    
+    if (shouldCacheTarget) {
+        self.targetCache[targetClzStr] = target;
     }
     
     if ([target respondsToSelector:action]) {
@@ -119,19 +130,34 @@
 #pragma clang diagnostic pop
     } else {
         // 这里是处理无响应请求的地方，如果无响应，则尝试调用对应target的notFound方法统一处理
-        if ([target respondsToSelector:@selector(notFound:)]) {
-            id result = [target performSelector:@selector(notFound:) withObject:params];
-            if (result) {
-                return result;
-            } else {
-                // 如果action无法响应，且notFound未实现，则调用tipDelegate的notFoundActionTipController返回提示VC
-                if ([self.tipDelegate respondsToSelector:@selector(notFoundActionTipController)]) {
-                    return [self.tipDelegate notFoundActionTipController];
-                }
+        SEL notFound = NSSelectorFromString(@"notFound:");
+        if ([target respondsToSelector:notFound]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            return [target performSelector:notFound withObject:params];
+#pragma clang diagnostic pop
+        } else {
+            // 如果action无法响应，且notFound未实现，则调用tipDelegate的notFoundActionTipController返回提示VC
+            if ([self.tipDelegate respondsToSelector:@selector(notFoundActionTipController)]) {
+                return [self.tipDelegate notFoundActionTipController];
             }
+            [self.targetCache removeObjectForKey:targetClzStr];
+            return nil;
         }
     }
     return @(NO);
+}
+
+- (void)releaseTargetCacheWithTargetName:(NSString *)targetName {
+    NSString *targetClassString = [NSString stringWithFormat:@"Target_%@", targetName];
+    [self.targetCache removeObjectForKey:targetClassString];
+}
+
+- (NSMutableDictionary *)targetCache {
+    if (_targetCache == nil) {
+        _targetCache = [NSMutableDictionary dictionary];
+    }
+    return _targetCache;
 }
 
 @end
