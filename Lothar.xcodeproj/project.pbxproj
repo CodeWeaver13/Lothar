@@ -16,7 +16,7 @@
 		CF84417E1DFDB0DC000D6EC2 /* LotharObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CF84417D1DFDB0DC000D6EC2 /* LotharObject.m */; };
 		CF8441841DFDB13B000D6EC2 /* LotharRouteMapObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8441831DFDB13B000D6EC2 /* LotharRouteMapObject.m */; };
 		CF8441881DFDB226000D6EC2 /* RouteMapTemplate.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8441871DFDB226000D6EC2 /* RouteMapTemplate.plist */; };
-		CF84418B1DFDB8E5000D6EC2 /* LotharMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = CF84418A1DFDB8E5000D6EC2 /* LotharMediator.m */; };
+		CF84418B1DFDB8E5000D6EC2 /* Lothar.m in Sources */ = {isa = PBXBuildFile; fileRef = CF84418A1DFDB8E5000D6EC2 /* Lothar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,6 @@
 		CF84416A1DFDAFF1000D6EC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CF84416D1DFDAFF1000D6EC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CF84416F1DFDAFF1000D6EC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CF8441761DFDB057000D6EC2 /* Lothar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lothar.h; sourceTree = "<group>"; };
 		CF8441791DFDB0C2000D6EC2 /* LotharConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LotharConfig.h; sourceTree = "<group>"; };
 		CF84417A1DFDB0C2000D6EC2 /* LotharConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LotharConfig.m; sourceTree = "<group>"; };
 		CF84417C1DFDB0DC000D6EC2 /* LotharObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LotharObject.h; sourceTree = "<group>"; };
@@ -39,8 +38,8 @@
 		CF8441851DFDB1BC000D6EC2 /* LotharExceptionProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LotharExceptionProtocol.h; sourceTree = "<group>"; };
 		CF8441861DFDB20C000D6EC2 /* LotharTipProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LotharTipProtocol.h; sourceTree = "<group>"; };
 		CF8441871DFDB226000D6EC2 /* RouteMapTemplate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RouteMapTemplate.plist; sourceTree = "<group>"; };
-		CF8441891DFDB8E5000D6EC2 /* LotharMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LotharMediator.h; sourceTree = "<group>"; };
-		CF84418A1DFDB8E5000D6EC2 /* LotharMediator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LotharMediator.m; sourceTree = "<group>"; };
+		CF8441891DFDB8E5000D6EC2 /* Lothar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lothar.h; sourceTree = "<group>"; };
+		CF84418A1DFDB8E5000D6EC2 /* Lothar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lothar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +97,8 @@
 		CF8441751DFDB037000D6EC2 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				CF8441761DFDB057000D6EC2 /* Lothar.h */,
-				CF8441891DFDB8E5000D6EC2 /* LotharMediator.h */,
-				CF84418A1DFDB8E5000D6EC2 /* LotharMediator.m */,
+				CF8441891DFDB8E5000D6EC2 /* Lothar.h */,
+				CF84418A1DFDB8E5000D6EC2 /* Lothar.m */,
 				CF8441791DFDB0C2000D6EC2 /* LotharConfig.h */,
 				CF84417A1DFDB0C2000D6EC2 /* LotharConfig.m */,
 				CF84417C1DFDB0DC000D6EC2 /* LotharObject.h */,
@@ -187,7 +185,7 @@
 			files = (
 				CF8441841DFDB13B000D6EC2 /* LotharRouteMapObject.m in Sources */,
 				CF84417B1DFDB0C2000D6EC2 /* LotharConfig.m in Sources */,
-				CF84418B1DFDB8E5000D6EC2 /* LotharMediator.m in Sources */,
+				CF84418B1DFDB8E5000D6EC2 /* Lothar.m in Sources */,
 				CF8441661DFDAFF1000D6EC2 /* ViewController.m in Sources */,
 				CF8441631DFDAFF1000D6EC2 /* AppDelegate.m in Sources */,
 				CF84417E1DFDB0DC000D6EC2 /* LotharObject.m in Sources */,

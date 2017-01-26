@@ -7,13 +7,6 @@
 //
 
 #import "Lothar.h"
-#import "LotharConfig.h"
-
-#import "LotharExceptionProtocol.h"
-#import "LotharTipProtocol.h"
-
-#import "LotharObject.h"
-#import "LotharRouteMapObject.h"
 
 @interface Lothar ()
 /**
