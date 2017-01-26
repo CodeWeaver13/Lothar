@@ -21,11 +21,11 @@
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = [NSClassFromString(@"ViewController") new];
     
-    LotharConfig *config = [[LotharConfig alloc] init];
-    config.URLScheme = @"lothar";
-    config.URLVerifySkip = YES;
-    config.URLRouteMapFilePath = [[NSBundle mainBundle] pathForResource:@"RouteMapTemplate" ofType:@"plist"];
-    [LotharMediator shared].config = config;
+    [LotharMediator setupConfig:^(LotharConfig * _Nonnull config) {
+        config.URLScheme = @"lothar";
+        config.URLVerifySkip = YES;
+        config.URLRouteMapFilePath = [[NSBundle mainBundle] pathForResource:@"RouteMapTemplate" ofType:@"plist"];
+    }];
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -60,7 +60,7 @@
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options
 {
-    return [[[LotharMediator shared] performActionWithUrl:url completion:nil] boolValue];
+    return [[LotharMediator performActionWithUrl:url completion:nil] boolValue];
 }
 
 @end

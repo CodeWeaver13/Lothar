@@ -17,6 +17,10 @@
 
 @interface LotharMediator ()
 /**
+ HLLothar的参数配置
+ */
+@property (nonatomic, strong, readwrite) LotharConfig *config;
+/**
  APP的控制器映射表
  */
 @property (nonatomic, strong) LotharRouteMapObject *URLModuleMap;
@@ -25,6 +29,27 @@
 @end
 
 @implementation LotharMediator
+#pragma mark - static methods
++ (void)setupConfig:(void(^)(LotharConfig * _Nonnull))config {
+    return [[self shared] setupConfig:config];
+}
+
++ (id)performActionWithUrl:(NSURL *)url completion:(void (^)(id _Nullable))completion {
+    return [[self shared] performActionWithUrl:url completion:completion];
+}
+
++ (nullable id)performTarget:(NSString *)targetName
+                        action:(NSString *)actionName
+                        params:(NSDictionary *)params
+             shouldCacheTarget:(BOOL)shouldCacheTarget
+{
+    return [[self shared] performTarget:targetName action:actionName params:params shouldCacheTarget:shouldCacheTarget];
+}
+
++ (void)releaseTargetCacheWithTargetName:(NSString *)targetName {
+    [[self shared] releaseTargetCacheWithTargetName:targetName];
+}
+
 #pragma mark - public methods
 + (instancetype)shared {
     static LotharMediator *mediator;
@@ -33,6 +58,10 @@
         mediator = [[LotharMediator alloc] init];
     });
     return mediator;
+}
+
+- (void)setupConfig:(void(^)(LotharConfig * _Nonnull))config {
+    !config ? nil : config(self.config);
 }
 
 - (LotharRouteMapObject *)URLModuleMap {

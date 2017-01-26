@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  HLLothar的参数配置
  */
-@property (nonatomic, strong) LotharConfig *config;
+@property (nonatomic, strong, readonly) LotharConfig *config;
 
 /**
  HLLothar异常处理代理
@@ -52,6 +52,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (instancetype)shared;
 
+
+/**
+ 配置config
+
+ @param config config对象
+ */
++ (void)setupConfig:(void(^)(LotharConfig *config))config;
+
 /**
  远程调用入口
  
@@ -61,7 +69,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param completion 如果远程调用有回调则在此执行，回调结果在info[result]内
  @return 如果远程调用有返回值，则在此直接返回，如果无法调用，则返回@(NO)
  */
-- (nonnull id)performActionWithUrl:(NSURL *)url completion:(void(^ _Nullable)(_Nullable id result))completion;
++ (nonnull id)performActionWithUrl:(NSURL *)url completion:(void(^ _Nullable)(_Nullable id result))completion;
 
 /**
  本地组件调用入口
@@ -71,9 +79,9 @@ NS_ASSUME_NONNULL_BEGIN
  @param params 传递的参数
  @return 如果本地调用有返回值，则在此直接返回，如果无法调用，则返回@(NO)
  */
-- (nullable id)performTarget:(NSString *)targetName action:(NSString *)actionName params:(NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget;
++ (nullable id)performTarget:(NSString *)targetName action:(NSString *)actionName params:(NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget;
 
 
-- (void)releaseTargetCacheWithTargetName:(NSString *)targetName;
++ (void)releaseTargetCacheWithTargetName:(NSString *)targetName;
 @end
 NS_ASSUME_NONNULL_END
