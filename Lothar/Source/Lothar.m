@@ -6,7 +6,7 @@
 //  Copyright © 2016年 mykj. All rights reserved.
 //
 
-#import "LotharMediator.h"
+#import "Lothar.h"
 #import "LotharConfig.h"
 
 #import "LotharExceptionProtocol.h"
@@ -15,7 +15,7 @@
 #import "LotharObject.h"
 #import "LotharRouteMapObject.h"
 
-@interface LotharMediator ()
+@interface Lothar ()
 /**
  HLLothar的参数配置
  */
@@ -28,7 +28,7 @@
 @property (nonatomic, strong) NSMutableDictionary *targetCache;
 @end
 
-@implementation LotharMediator
+@implementation Lothar
 #pragma mark - static methods
 + (void)setupConfig:(void(^)(LotharConfig * _Nonnull))config {
     return [[self shared] setupConfig:config];
@@ -52,10 +52,10 @@
 
 #pragma mark - public methods
 + (instancetype)shared {
-    static LotharMediator *mediator;
+    static Lothar *mediator;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        mediator = [[LotharMediator alloc] init];
+        mediator = [[Lothar alloc] init];
     });
     return mediator;
 }
