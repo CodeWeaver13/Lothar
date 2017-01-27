@@ -82,6 +82,27 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (nullable id)performTarget:(NSString *)targetName action:(NSString *)actionName params:(NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget;
 
+/**
+ 远程调用入口
+ 
+ @param url 规则：scheme://[user]:[password]@[target]/[action]?[params]
+ URL例子: myapp://user:password@targetA/actionB?id=1234
+ 
+ @param completion 如果远程调用有回调则在此执行，回调结果在info[result]内
+ @return 如果远程调用有返回值，则在此直接返回，如果无法调用，则返回@(NO)
+ */
+- (nonnull id)performActionWithUrl:(NSURL *)url completion:(void(^ _Nullable)(_Nullable id result))completion;
+
+/**
+ 本地组件调用入口
+ 
+ @param targetName 调用的类名
+ @param actionName 调用的方法名
+ @param params 传递的参数
+ @return 如果本地调用有返回值，则在此直接返回，如果无法调用，则返回@(NO)
+ */
+- (nullable id)performTarget:(NSString *)targetName action:(NSString *)actionName params:(NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget;
+
 
 + (void)releaseTargetCacheWithTargetName:(NSString *)targetName;
 @end
