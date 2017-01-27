@@ -80,7 +80,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param params 传递的参数
  @return 如果本地调用有返回值，则在此直接返回，如果无法调用，则返回@(NO)
  */
-+ (nullable id)performTarget:(NSString *)targetName action:(NSString *)actionName params:(NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget;
++ (nullable id)performTarget:(NSString *)targetName action:(NSString *)actionName params:(_Nullable NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget;
 
 /**
  远程调用入口
@@ -101,7 +101,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param params 传递的参数
  @return 如果本地调用有返回值，则在此直接返回，如果无法调用，则返回@(NO)
  */
-- (nullable id)performTarget:(NSString *)targetName action:(NSString *)actionName params:(NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget;
+- (nullable id)performTarget:(NSString *)targetName action:(NSString *)actionName params:(_Nullable NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget;
 
 
 + (void)releaseTargetCacheWithTargetName:(NSString *)targetName;
