@@ -14,6 +14,8 @@
 ====
 
 ## 使用方法
+**具体使用方法请看[我的简书](http://www.jianshu.com/p/568e875abd48)**
+
 ***AppDelegate application:didFinishLaunchingWithOptions:***
 
 ```objective-c
