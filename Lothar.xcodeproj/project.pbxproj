@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF841CF11E43C26C00D248A6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = CF841CEF1E43C26C00D248A6 /* LICENSE */; };
+		CF841CF21E43C26C00D248A6 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CF841CF01E43C26C00D248A6 /* README.md */; };
 		CF8441601DFDAFF1000D6EC2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF84415F1DFDAFF1000D6EC2 /* main.m */; };
 		CF8441631DFDAFF1000D6EC2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8441621DFDAFF1000D6EC2 /* AppDelegate.m */; };
 		CF8441661DFDAFF1000D6EC2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8441651DFDAFF1000D6EC2 /* ViewController.m */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF841CEF1E43C26C00D248A6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		CF841CF01E43C26C00D248A6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CF84415B1DFDAFF1000D6EC2 /* Lothar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lothar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF84415F1DFDAFF1000D6EC2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CF8441611DFDAFF1000D6EC2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -53,6 +57,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF841CEE1E43C25A00D248A6 /* Podspec */ = {
+			isa = PBXGroup;
+			children = (
+				CF841CEF1E43C26C00D248A6 /* LICENSE */,
+				CF841CF01E43C26C00D248A6 /* README.md */,
+			);
+			name = Podspec;
+			sourceTree = "<group>";
+		};
 		CF8441521DFDAFF1000D6EC2 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +85,7 @@
 		CF84415D1DFDAFF1000D6EC2 /* Lothar */ = {
 			isa = PBXGroup;
 			children = (
+				CF841CEE1E43C25A00D248A6 /* Podspec */,
 				CF8441751DFDB037000D6EC2 /* Source */,
 				CF8441611DFDAFF1000D6EC2 /* AppDelegate.h */,
 				CF8441621DFDAFF1000D6EC2 /* AppDelegate.m */,
@@ -172,6 +186,7 @@
 			files = (
 				CF84416E1DFDAFF1000D6EC2 /* LaunchScreen.storyboard in Resources */,
 				CF8441881DFDB226000D6EC2 /* RouteMapTemplate.plist in Resources */,
+				CF841CF11E43C26C00D248A6 /* LICENSE in Resources */,
 				CF84416B1DFDAFF1000D6EC2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,6 +204,7 @@
 				CF8441661DFDAFF1000D6EC2 /* ViewController.m in Sources */,
 				CF8441631DFDAFF1000D6EC2 /* AppDelegate.m in Sources */,
 				CF84417E1DFDB0DC000D6EC2 /* LotharObject.m in Sources */,
+				CF841CF21E43C26C00D248A6 /* README.md in Sources */,
 				CF8441601DFDAFF1000D6EC2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

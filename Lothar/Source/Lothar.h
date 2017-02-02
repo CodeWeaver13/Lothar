@@ -99,7 +99,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param targetName 调用的类名
  @param actionName 调用的方法名
  @param params 传递的参数
- @return 如果本地调用有返回值，则在此直接返回，如果无法调用，则返回@(NO)
+ @return 如果本地调用有返回值，则在此直接返回，如果无法调用，则返回nil
  */
 - (nullable id)performTarget:(NSString *)targetName action:(NSString *)actionName params:(nullable NSDictionary *)params shouldCacheTarget:(BOOL)shouldCacheTarget;
 

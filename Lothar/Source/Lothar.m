@@ -167,7 +167,7 @@
             return nil;
         }
     }
-    return @(NO);
+    return nil;
 }
 
 - (void)releaseTargetCacheWithTargetName:(NSString *)targetName {
