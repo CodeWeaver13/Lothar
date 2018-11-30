@@ -19,6 +19,7 @@
 		CF8441841DFDB13B000D6EC2 /* LotharRouteMapObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8441831DFDB13B000D6EC2 /* LotharRouteMapObject.m */; };
 		CF8441881DFDB226000D6EC2 /* RouteMapTemplate.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF8441871DFDB226000D6EC2 /* RouteMapTemplate.plist */; };
 		CF84418B1DFDB8E5000D6EC2 /* Lothar.m in Sources */ = {isa = PBXBuildFile; fileRef = CF84418A1DFDB8E5000D6EC2 /* Lothar.m */; };
+		D8F5AE6321B145FB00201565 /* Lothar.podspec in Resources */ = {isa = PBXBuildFile; fileRef = D8F5AE6221B145FB00201565 /* Lothar.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		CF8441871DFDB226000D6EC2 /* RouteMapTemplate.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RouteMapTemplate.plist; sourceTree = "<group>"; };
 		CF8441891DFDB8E5000D6EC2 /* Lothar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lothar.h; sourceTree = "<group>"; };
 		CF84418A1DFDB8E5000D6EC2 /* Lothar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lothar.m; sourceTree = "<group>"; };
+		D8F5AE6221B145FB00201565 /* Lothar.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Lothar.podspec; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		CF841CEE1E43C25A00D248A6 /* Podspec */ = {
 			isa = PBXGroup;
 			children = (
+				D8F5AE6221B145FB00201565 /* Lothar.podspec */,
 				CF841CEF1E43C26C00D248A6 /* LICENSE */,
 				CF841CF01E43C26C00D248A6 /* README.md */,
 			);
@@ -156,7 +159,7 @@
 				TargetAttributes = {
 					CF84415A1DFDAFF1000D6EC2 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = A54ZG5654W;
+						DevelopmentTeam = ZX58AKKX9F;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -186,6 +189,7 @@
 			files = (
 				CF84416E1DFDAFF1000D6EC2 /* LaunchScreen.storyboard in Resources */,
 				CF8441881DFDB226000D6EC2 /* RouteMapTemplate.plist in Resources */,
+				D8F5AE6321B145FB00201565 /* Lothar.podspec in Resources */,
 				CF841CF11E43C26C00D248A6 /* LICENSE in Resources */,
 				CF84416B1DFDAFF1000D6EC2 /* Assets.xcassets in Resources */,
 			);
@@ -317,7 +321,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = A54ZG5654W;
+				DEVELOPMENT_TEAM = ZX58AKKX9F;
 				INFOPLIST_FILE = Lothar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mykj.Lothar;
@@ -329,7 +333,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = A54ZG5654W;
+				DEVELOPMENT_TEAM = ZX58AKKX9F;
 				INFOPLIST_FILE = Lothar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mykj.Lothar;
