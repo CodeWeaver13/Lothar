@@ -250,11 +250,4 @@
     return _targetCache;
 }
 
-- (LotharConfig *)config {
-    if (_config == nil) {
-        _config = [[LotharConfig alloc] init];
-    }
-    return _config;
-}
-
 @end
